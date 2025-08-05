@@ -1,5 +1,6 @@
 import com.microsoft.playwright.*;
 import org.testng.annotations.Test;
+import static org.testng.Assert.assertEquals;
 
 public class LaunchBrowser {
 
@@ -11,6 +12,11 @@ public class LaunchBrowser {
             Page page = context.newPage();
             page.navigate("https://www.saucedemo.com");
             page.fill("#user-name", "standard_user");
+            page.fill("#password", "secret_sauce");
+            page.click("#login-button");
+            assertEquals(page.title(), "Swag Labs");
+            assertEquals(page.locator(".title").textContent(), "Products");
+
             Thread.sleep(1000);
 
         } catch (InterruptedException e) {
