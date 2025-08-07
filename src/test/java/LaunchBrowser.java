@@ -10,8 +10,16 @@ public class LaunchBrowser {
             BrowserContext context = browser.newContext();
             Page page = context.newPage();
             page.navigate("https://www.saucedemo.com");
-            page.fill("#user-name", "standard_user");
-            Thread.sleep(1000);
+            String username = "standard_user";
+            String password = "secret_sauce";
+
+            // Fill in the login form
+            page.fill("#user-name", username);
+            page.fill("#password", password);
+            page.click("#login-button");
+            Thread.sleep(2000);
+
+
 
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
