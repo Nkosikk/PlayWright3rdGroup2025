@@ -1,3 +1,5 @@
+package Basics;
+
 import com.microsoft.playwright.*;
 import org.testng.annotations.Test;
 
