@@ -23,5 +23,9 @@ public class HomePage {
 
     }
 
+//    public String getPracticeAssessments() {
+//        return page.textContent(PracticeAssessments()
+//
+//    }
 
 }
