@@ -23,7 +23,8 @@ public class HomePage {
     public boolean isPageLoaded() {
         return isWelcomeTextVisible() && isLearningMaterialsButtonVisible();
     }
-
-
+    public void clickLearningMaterialsButton() {
+        page.click(learningMaterialsLocator);
+    }
 
 }
