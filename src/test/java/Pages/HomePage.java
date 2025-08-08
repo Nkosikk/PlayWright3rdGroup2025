@@ -20,6 +20,8 @@ public class HomePage {
         return page.isVisible(learningMaterialsLocator);
     }
 
+// This method checks if the Home page is loaded by verifying the visibility of the welcome text and
+// the Learning Materials button. If both elements are visible, it returns true
     public boolean isPageLoaded() {
         return isWelcomeTextVisible() && isLearningMaterialsButtonVisible();
     }
