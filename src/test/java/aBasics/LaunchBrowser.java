@@ -1,6 +1,7 @@
 package aBasics;
 
 import com.microsoft.playwright.*;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LaunchBrowser {
@@ -13,7 +14,11 @@ public class LaunchBrowser {
             Page page = context.newPage();
             page.navigate("https://www.saucedemo.com");
             page.fill("#user-name", "standard_user");
+            page.fill("#password", "secret_sauce");
+            page.click("#login-button");
             Thread.sleep(1000);
+            //page.getByTitle("xpath=//div[@id='header_container']/
+
 
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
