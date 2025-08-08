@@ -13,6 +13,7 @@ public class HomePage {
     }
 
     public boolean isLoggedIn() {
+
         return page.isVisible("button:has-text('Logout')");
     }
 
