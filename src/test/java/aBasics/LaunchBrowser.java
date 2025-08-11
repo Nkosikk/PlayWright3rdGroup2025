@@ -17,7 +17,10 @@ public class LaunchBrowser {
             page.fill("#password", "secret_sauce");
             page.click("#login-button");
             Thread.sleep(1000);
-            //page.getByTitle("xpath=//div[@id='header_container']/
+
+
+            String productTitle = page.textContent(".title");
+            Assert.assertEquals(productTitle, "Products", "Product title does not match");
 
 
         } catch (InterruptedException e) {
