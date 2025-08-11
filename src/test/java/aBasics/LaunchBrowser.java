@@ -1,6 +1,7 @@
 package aBasics;
 
 import com.microsoft.playwright.*;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LaunchBrowser {
@@ -13,10 +14,14 @@ public class LaunchBrowser {
             Page page = context.newPage();
             page.navigate("https://www.saucedemo.com");
             page.fill("#user-name", "standard_user");
-            Thread.sleep(1000);
+            page.fill("#password", "secret_sauce");
+            page.click("#login-button");
+            String actualElementName = page.textContent("span:has-text('Products')");
+            Assert.assertEquals(actualElementName,"Products");
+            System.out.println(actualElementName);
 
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            page.pause();
+
         }
     }
 }
