@@ -13,6 +13,8 @@ public class LaunchBrowser {
             Page page = context.newPage();
             page.navigate("https://www.saucedemo.com");
             page.fill("#user-name", "standard_user");
+            page.fill("#password", "secret_sauce");
+            page.click("#login-button");
             Thread.sleep(1000);
 
         } catch (InterruptedException e) {

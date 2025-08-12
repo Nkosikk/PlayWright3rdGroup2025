@@ -1,15 +1,22 @@
 package Pages;
 
 import com.microsoft.playwright.Page;
+import org.testng.annotations.Test;
 
+@Test
 public class HomePage {
-    Page page;
+    private final Page page;
+
 
     private String welcomeText = "h2:has-text('Welcome to Ndosi Online Automation Boot-Camp')";
     private String learningMaterialsLocator = "button:has-text('Learning Materials')";
+    private String seleniumPracticeLocator = "button:has-text('Selenium Practice')";
+    private String logoutButtonLocator = "button:has-text('Logout')";
 
-    public HomePage(Page page){
+    public HomePage(Page page) {
         this.page = page;
+
+
     }
 
     public boolean isLoggedIn() {
@@ -22,6 +29,11 @@ public class HomePage {
         return new HomePage(page);
 
     }
-
-
+    public HomePage clickSeleniumPractice() {
+        page.click(seleniumPracticeLocator);
+        return new HomePage(page);
+    }
 }
+
+
+
