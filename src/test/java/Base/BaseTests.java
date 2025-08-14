@@ -6,7 +6,7 @@ import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.Tracing;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeMethod;
 
 import java.util.Properties;
 
@@ -17,7 +17,7 @@ public class BaseTests {
     PlayWrightBrowserFactory pf;
     Properties prop;
 
-    @BeforeTest
+    @BeforeMethod
     public void setup() {
         pf = new PlayWrightBrowserFactory();
         prop = pf.init_prop(); // Initialize properties if needed
