@@ -40,6 +40,9 @@ public class PlayWrightBrowserFactory {
         browserContext = browser.newContext();
         page = browser.newContext().newPage();
         page.navigate(prop.getProperty("dev_url").trim());
+        //maximize the browser window
+        page.setViewportSize(1920, 1080);
+        System.out.println("Browser launched successfully: " + browserName);
 
     }
 

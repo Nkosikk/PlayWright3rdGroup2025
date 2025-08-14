@@ -13,7 +13,9 @@ public class LaunchBrowser {
             Page page = context.newPage();
             page.navigate("https://www.saucedemo.com");
             page.fill("#user-name", "standard_user");
+
             Thread.sleep(1000);
+
 
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
