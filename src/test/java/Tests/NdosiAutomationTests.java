@@ -10,4 +10,10 @@ public class NdosiAutomationTests extends BaseTests {
         homePage.clickLearningMaterials();
     }
 
+    @Test
+    public void testIsLoggedIn() {
+        boolean loggedIn = homePage.isLoggedIn();
+        org.testng.Assert.assertTrue(loggedIn, "User should be logged in and Logout button should be visible");
+    }
+
 }
