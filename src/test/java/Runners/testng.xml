@@ -4,7 +4,9 @@
 <!--    <listeners>-->
 <!--        <listener class-name="ExtentReport.ExtentReportListener"></listener>-->
 <!--    </listeners>-->
-
+    <listeners>
+        <listener class-name="ExtentReport.ExtentReportListener" />
+    </listeners>
     <test verbose="2" preserve-order="true" name="Login tests">
         <classes>
             <class name="Tests.NdosiAutomation1Tests">
