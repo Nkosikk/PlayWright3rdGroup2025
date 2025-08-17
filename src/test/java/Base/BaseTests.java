@@ -1,6 +1,7 @@
 package Base;
 
 import BrowserFactory.PlayWrightBrowserFactory;
+import BrowserFactory.PlaywrightBrowserFactory;
 import Pages.HomePage;
 import com.microsoft.playwright.Page;
 import org.testng.annotations.BeforeTest;
@@ -11,12 +12,12 @@ public class BaseTests {
 
     protected Page page;
     protected HomePage homePage;
-    PlayWrightBrowserFactory pf;
+    PlaywrightBrowserFactory pf;
     Properties prop;
 
     @BeforeTest
     public void setup(){
-        pf = new PlayWrightBrowserFactory();
+        pf = new PlaywrightBrowserFactory();
         prop = pf.init_prop(); // Initialize properties if needed
         pf.initBrowser(prop);
         page = pf.getPage();
