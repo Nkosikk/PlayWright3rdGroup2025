@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class NdosiAutomationTests extends BaseTests {
 
     public void clickLearningMaterialTests() {
-        homePage.clickLearningMaterials();
+        homePage.clickLearningMaterialsButton();
     }
 
     @Test
