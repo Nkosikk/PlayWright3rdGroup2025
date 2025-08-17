@@ -1,6 +1,6 @@
 package Base;
 
-import BrowserFactory.PlayWrightBrowserFactory;
+import BrowserFactory.PlaywrightBrowserFactory;
 import BrowserFactory.PlaywrightBrowserFactory;
 import Pages.HomePage;
 import com.microsoft.playwright.Page;
