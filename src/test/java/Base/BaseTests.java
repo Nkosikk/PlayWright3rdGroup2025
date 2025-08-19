@@ -2,20 +2,22 @@ package Base;
 
 import BrowserFactory.PlayWrightBrowserFactory;
 import Pages.HomePage;
+import Tests.NdosiAutomationTests;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.Tracing;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
-
+import org.testng.annotations.*;
 import java.util.Properties;
+
+
 
 public class BaseTests {
 
-    protected Page page;
+    public Page page;
     protected HomePage homePage;
     PlayWrightBrowserFactory pf;
     Properties prop;
+
 
     @BeforeMethod
     public void setup() {
@@ -31,6 +33,8 @@ public class BaseTests {
                 .setSources(true));
     }
 
+
+
     @AfterTest
     public void tearDown() {
         // Stop tracing and export trace
@@ -40,4 +44,5 @@ public class BaseTests {
             page.close();
         }
     }
+
 }
