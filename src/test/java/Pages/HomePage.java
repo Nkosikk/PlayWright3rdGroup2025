@@ -8,6 +8,7 @@ public class HomePage {
     private String welcomeText = "h2:has-text('Welcome to Ndosi Online Automation Boot-Camp')";
     private String learningMaterialsLocator = "button:has-text('Learning Materials')";
 
+
     public HomePage(Page page){
         this.page = page;
     }
