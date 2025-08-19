@@ -9,6 +9,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 
 import java.util.Properties;
+import Utils.ExtentReportManager;
 
 public class BaseTests {
 
@@ -29,6 +30,8 @@ public class BaseTests {
                 .setScreenshots(true)
                 .setSnapshots(true)
                 .setSources(true));
+
+        ExtentReportManager.getExtentReports();
     }
 
     @AfterTest
@@ -39,5 +42,6 @@ public class BaseTests {
         if (page != null) {
             page.close();
         }
+        ExtentReportManager.flushReports();
     }
 }
