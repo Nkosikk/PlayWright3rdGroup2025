@@ -20,7 +20,7 @@ public class ExtentReportManager {
         extentReports.attachReporter(extentSparkReporter);
 
         extentSparkReporter.config().setDocumentTitle("Extent Report");
-        extentSparkReporter.config().setReportName("Sauce Demo");
+        extentSparkReporter.config().setReportName("PlayWrite Demo");
 
         extentReports.setSystemInfo("OS",System.getProperty("os.name"));
         extentReports.setSystemInfo("Exection Machine",System.getProperty("user.name"));

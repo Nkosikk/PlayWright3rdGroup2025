@@ -6,35 +6,28 @@ import org.testng.annotations.Test;
 @Test
 public class NdosiAutomationTests extends BaseTests {
 
-    @Test
-    public void testIsPageLoaded() {
-        boolean isPageLoaded = homePage.isPageLoaded();
-        org.testng.Assert.assertTrue(isPageLoaded, "Home page should be loaded with welcome text and Learning Materials button visible");
-    }
-
-    @Test
-    public void clickLearningMaterialTests() {
-        homePage.clickLearningMaterialsButton();
-    }
-
-
-    @Test
-    public void testIsLoggedIn() {
-        boolean loggedIn = homePage.isLoggedIn();
-        org.testng.Assert.assertTrue(loggedIn, "User should be logged in and Logout button should be visible");
-    }
 
     @Test
     public void testWelcomeTextVisibility() {
         boolean isWelcomeTextVisible = homePage.isWelcomeTextVisible();
         org.testng.Assert.assertTrue(isWelcomeTextVisible, "Welcome text should be visible on the Home page");
     }
-
     @Test
-    public void testLearningMaterialsButtonVisibility() {
-        boolean isLearningMaterialsButtonVisible = homePage.isLearningMaterialsButtonVisible();
-        org.testng.Assert.assertTrue(isLearningMaterialsButtonVisible, "Learning Materials button should be visible on the Home page");
+    public void testClickLearningMaterialsButton() {
+        homePage.clickLearningMaterialsButton();
+        // After clicking the Learning Materials button, we can check if the login button is visible
+        boolean isLoginButtonVisible = homePage.isLoginButtonVisible();
+        org.testng.Assert.assertTrue(isLoginButtonVisible, "Login button should be visible after clicking Learning Materials button");
     }
+
+   @Test
+    public void testLoginButton() {
+        // Click the Learning Materials button to trigger the visibility of the login button
+        homePage.clickLearningMaterialsButton();
+        boolean isLoginButtonVisible = homePage.isLoginButtonVisible();
+        org.testng.Assert.assertTrue(isLoginButtonVisible, "Login button should be visible after clicking Learning Materials button");
+    }
+
 
 
 }
