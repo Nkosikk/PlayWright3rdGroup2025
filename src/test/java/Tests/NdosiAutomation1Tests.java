@@ -3,15 +3,14 @@ package Tests;
 import Base.BaseTests;
 import org.testng.annotations.Test;
 
-public class NdosiAutomationTests extends BaseTests {
-
+public class NdosiAutomation1Tests extends BaseTests {
     @Test
-    public void clickLearningMaterialTests1() {
+    public void clickLearningMaterialTests() {
         homePage.clickLearningMaterials();
     }
 
 //    @Test
-//    public void testIsLoggedIn1() {
+//    public void testIsLoggedIn() {
 //        boolean loggedIn = homePage.isLoggedIn();
 //        org.testng.Assert.assertTrue(loggedIn, "User should be logged in and Logout button should be visible");
 //    }
