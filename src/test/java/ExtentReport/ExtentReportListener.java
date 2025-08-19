@@ -13,6 +13,8 @@ public class ExtentReportListener {
 
     public static ExtentReports extentSetup(){
 
+        //Initialize the ExtentReports and ExtentSparkReporter
+
         extentReports = new ExtentReports();
         extentSparkReporter = new ExtentSparkReporter(new File(reportDir));
         extentReports.attachReporter(extentSparkReporter);
@@ -22,6 +24,14 @@ public class ExtentReportListener {
 
         extentReports.setSystemInfo("OS",System.getProperty("os.name"));
         extentReports.setSystemInfo("Exection Machine",System.getProperty("user.name"));
+        extentReports.setSystemInfo("Java Version", System.getProperty("java.version"));
+        extentReports.setSystemInfo("User", System.getProperty("user.name"));
+        extentReports.setSystemInfo("User Directory", System.getProperty("user.dir"));
+        extentReports.setSystemInfo("User Home", System.getProperty("user.home"));
+        extentReports.setSystemInfo("Java Vendor", System.getProperty("java.vendor"));
+        extentReports.setSystemInfo("Java Vendor URL", System.getProperty("java.vendor.url"));
+
+
         return extentReports;
     }
 }
