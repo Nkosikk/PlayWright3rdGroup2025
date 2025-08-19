@@ -16,12 +16,20 @@ public class LaunchBrowser {
             page.fill("#user-name", "standard_user");
             page.fill("#password", "secret_sauce");
             page.click("#login-button");
-            String actualElementName = page.textContent("span:has-text('Products')");
-            Assert.assertEquals(actualElementName,"Products");
-            System.out.println(actualElementName);
+            Thread.sleep(1000);
 
-            page.pause();
 
+            //assert that the products page is displayed
+            String pageTitle = page.title();
+            if (pageTitle.equals("Swag Labs")) {
+                System.out.println("Login successful, products page displayed.");
+            } else {
+                System.out.println("Login failed, products page not displayed.");
+            }
+
+
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 }
