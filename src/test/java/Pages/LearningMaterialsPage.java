@@ -2,7 +2,7 @@ package Pages;
 
 import com.microsoft.playwright.Page;
 
-public class LearningMaterials {
+public class LearningMaterialsPage {
     Page page;
     // Locators for the elements on the Learning Materials page
     // These locators are used to interact with the elements on the page
@@ -18,7 +18,7 @@ public class LearningMaterials {
     // The page object represents the current state of the browser page being tested.
     // It allows the class to perform actions like checking visibility of elements or clicking buttons.
 
-    public LearningMaterials(Page page) {
+    public LearningMaterialsPage(Page page) {
         this.page = page;
     }
     // This method checks if the "Practice Assessments" button is visible on the page.

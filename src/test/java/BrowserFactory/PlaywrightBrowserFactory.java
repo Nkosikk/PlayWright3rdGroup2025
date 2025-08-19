@@ -57,7 +57,7 @@ public class PlaywrightBrowserFactory {
 
     public Properties init_prop() {
         try {
-            FileInputStream ip = new FileInputStream("src/test/resources/config.properties");
+            FileInputStream ip = new FileInputStream("src/test/resources/Configs/config.properties");
             prop = new Properties();
             prop.load(ip);
         } catch (Exception e) {
