@@ -8,11 +8,8 @@ import com.microsoft.playwright.Tracing;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 
-import java.nio.file.Paths;
 import java.util.Properties;
 
-
-import ExtentReport.ExtentReportListener;
 public class BaseTests {
 
     protected Page page;
@@ -34,14 +31,13 @@ public class BaseTests {
                 .setSources(true));
     }
 
-
     @AfterTest
     public void tearDown() {
+        // Stop tracing and export trace
+        page.context().tracing().stop(new Tracing.StopOptions()
+                .setPath(java.nio.file.Paths.get("trace.zip")));
         if (page != null) {
-            page.context().tracing().stop(new Tracing.StopOptions()
-                    .setPath(Paths.get("trace.zip"))); // Save the trace file
-            page.context().close();
-
+            page.close();
         }
     }
 }

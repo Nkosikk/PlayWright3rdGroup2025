@@ -15,8 +15,6 @@ public class PlayWrightBrowserFactory {
     private Page page;
     Browser browser;
     Properties prop;
-  //initialize playwright instance
-    Playwright playwright;
 
     public void initBrowser(Properties prop) {
         String browserName = prop.getProperty("browser6").trim();
@@ -68,7 +66,6 @@ public class PlayWrightBrowserFactory {
         }
         return prop;
     }
-
 
 
 }
