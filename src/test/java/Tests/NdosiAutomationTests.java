@@ -19,7 +19,6 @@ public class NdosiAutomationTests extends BaseTests {
 
     @Test(priority = 3)
     public void loginTests() {
-        LoginPage loginPage = new LoginPage(page);
         loginPage.EnterUsername("testuser")
                 .EnterPassword("password123");
         loginPage.clickLoginButton();

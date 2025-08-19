@@ -2,6 +2,7 @@ package Base;
 
 import BrowserFactory.PlayWrightBrowserFactory;
 import Pages.HomePage;
+import Pages.LoginPage;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import org.testng.annotations.BeforeTest;
@@ -12,6 +13,7 @@ public class BaseTests {
 
     protected Page page;
     protected HomePage homePage;
+    protected LoginPage loginPage;
     PlayWrightBrowserFactory pf;
     Properties prop;
 
@@ -22,6 +24,7 @@ public class BaseTests {
         pf.initBrowser(prop);
         page = pf.getPage();
         homePage = new HomePage(page);
+        loginPage = new LoginPage(page);
     }
 
 }
