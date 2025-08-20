@@ -3,6 +3,7 @@ package Base;
 import BrowserFactory.PlayWrightBrowserFactory;
 import Pages.HomePage;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.Tracing;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;

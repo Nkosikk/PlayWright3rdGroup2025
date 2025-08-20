@@ -8,7 +8,7 @@ import com.microsoft.playwright.Playwright;
 import java.io.FileInputStream;
 import java.util.Properties;
 
-public class PlayWrightBrowserFactory{
+public class PlayWrightBrowserFactory {
 
     BrowserContext browserContext;
     private Page page;

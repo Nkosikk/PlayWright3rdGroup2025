@@ -9,8 +9,6 @@
         <classes>
             <class name="Tests.NdosiAutomationTests">
             </class>
-<!--            <class name="Tests.NdosiAutomationTests">-->
-<!--            </class>-->
         </classes>
     </test>
 </suite>
