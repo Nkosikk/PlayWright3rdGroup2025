@@ -8,12 +8,12 @@ public class NdosiAutomationTests extends BaseTests {
 
 
     @Test
-    public void testWelcomeTextVisibility() {
+    public void a_testWelcomeTextVisibility() {
         boolean isWelcomeTextVisible = homePage.isWelcomeTextVisible();
         org.testng.Assert.assertTrue(isWelcomeTextVisible, "Welcome text should be visible on the Home page");
     }
     @Test
-    public void testClickLearningMaterialsButton() {
+    public void b_testClickLearningMaterialsButton() {
         homePage.clickLearningMaterialsButton();
         // After clicking the Learning Materials button, we can check if the login button is visible
         boolean isLoginButtonVisible = homePage.isLoginButtonVisible();
@@ -21,7 +21,7 @@ public class NdosiAutomationTests extends BaseTests {
     }
 
    @Test
-    public void testLoginButton() {
+    public void c_testLoginButton() {
         // Click the Learning Materials button to trigger the visibility of the login button
         homePage.clickLearningMaterialsButton();
         boolean isLoginButtonVisible = homePage.isLoginButtonVisible();
