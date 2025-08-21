@@ -7,8 +7,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 public class test {
- PlayWrightFactory pf;
- Page page;
- HomePage homePage;
+    PlayWrightFactory pf;
+    Page page;
+    HomePage homePage;
 
-
+}
