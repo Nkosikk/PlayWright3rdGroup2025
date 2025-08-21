@@ -1,40 +1,62 @@
 package aBasics;
 
-import com.microsoft.playwright.*;
-import org.junit.jupiter.api.Test;
-//import org.testng.annotations.Test;
+
+import com.microsoft.playwright.Browser;
+import com.microsoft.playwright.BrowserType;
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.Playwright;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class LaunchBrowser {
 
+    Playwright playwright;
+    Browser browser;
+    Page page;
+
     @Test
-    public void launchChromium() {
-        // try (Playwright playwright = Playwright.create()) {
-        //Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
-        try (Playwright playwright = Playwright.create()) {
-            Browser browser = playwright.chromium().launch(
-                    new BrowserType.LaunchOptions()
-                            .setChannel("chrome")
-                            .setHeadless(false)
-            );
+    public void launchBrowser() {
+        playwright = Playwright.create();
+        browser = playwright.chromium()
+                .launch(new BrowserType
+                        .LaunchOptions()
+                        .setHeadless(false));
+        page = browser.newPage();
+        page.navigate("https://saucedemo.com/");
+    }
 
-            BrowserContext context = browser.newContext();
-            Page page = context.newPage();
-            page.navigate("https://www.saucedemo.com");
-            page.fill("#user-name", "standard_user");
-            page.fill("#password", "secret_sauce");
-            page.click("#login-button");
+    @Test(dependsOnMethods = "launchBrowser")
+    public void loginTest() {
+        page.locator("[data-test='username']").fill("standard_user");
+        page.locator("[data-test='password']").fill("secret_sauce");
+        page.locator("[data-test='login-button']").click();
 
-            // Wait for the page to load and the product title to be visible
+    }
+    @Test(dependsOnMethods = "loginTest")
+    public void verifyLogin() {
+        Assert.assertTrue(page.locator("[data-test=\"title\"]").isVisible(), "Title is not visible after login");
+    }
+    @Test(dependsOnMethods = "verifyLogin")
+    public void clickOnMenu() {
+        page.locator("#react-burger-menu-btn").click();
+    }
+    @Test(dependsOnMethods = "clickOnMenu")
+    public void logout() {
+        page.locator("#logout_sidebar_link").click();
+    }
 
-            Locator productTitle = page.locator(".title[data-test='title']");
-
-            Assert.assertTrue(productTitle.isVisible(), "Product title is not visible!");
-
-            Thread.sleep(1000);
-
-
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+    @Test(dependsOnMethods = "logout")
+    public void tearDown() {
+        if (page != null) {
+            page.close();
+        }
+        if (browser != null) {
+            browser.close();
+        }
+        if (playwright != null) {
+            playwright.close();
         }
     }
+
 }
+

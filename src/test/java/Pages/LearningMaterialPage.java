@@ -1,41 +1,40 @@
 package Pages;
 
+
 import com.microsoft.playwright.Page;
 
+import static org.testng.Assert.assertTrue;
+
 public class LearningMaterialPage {
-    Page page;
+    private Page page;
 
-    private String usernameLocator = "input:has-text('Enter your username')";
-    private String passwordLocator = "input:has-text('Enter your password')";
+    private String learningMaterialHeaderLocator = "span:has-text('Access Learning Materials')";
+    private String userNameLocator = "input[placeholder='Username']";
+    private String passwordLocator = "input[placeholder='Password']";
     private String loginButtonLocator = "button:has-text('Login')";
-    private String seleniumPracticeLocator = "button:has-text('Selenium Practice')";
 
-    public LearningMaterialPage(Page page){
+    // Constructor to initialize the page
+    public LearningMaterialPage(Page page) {
         this.page = page;
     }
 
-    public boolean IsInMaterial() {
-        return page.isVisible("h2:has-text('Practice Assessments')");
+    // Method to verify that we are on the Learning Material page
+    public void verifyLearningMaterialPage() {
+        assertTrue(page.locator(learningMaterialHeaderLocator).isVisible(),
+                "Learning Material header is not visible");
+        }
+    // Method to fill in the username
+    public void fillUsername() {
+        page.locator(userNameLocator).fill("admin");
     }
-
-    public LearningMaterialPage clickSeleniumPractice() {
-        page.click(seleniumPracticeLocator);
-        return new LearningMaterialPage(page);
-
+    // Method to fill in the password
+    public void fillPassword() {
+        page.locator(passwordLocator).fill("ndosi");
     }
-    public LearningMaterialPage enterUsername() {
-        page.fill(usernameLocator, "testuser");
-        return this;
+    // Method to click the login button
+    public void clickLoginButton() {
+        page.locator(loginButtonLocator).click();
     }
-    public LearningMaterialPage enterPassword() {
-        page.fill(passwordLocator, "password123");
-        return this;
-    }
-    public LearningMaterialPage clickLogin() {
-        page.click(loginButtonLocator);
-        return this;
-    }
-
 
 
 }

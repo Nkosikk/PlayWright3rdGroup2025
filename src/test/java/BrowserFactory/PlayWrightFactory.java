@@ -2,13 +2,14 @@ package BrowserFactory;
 
 import com.microsoft.playwright.*;
 
-public class test {
+public class PlayWrightFactory {
     Playwright playwright;
     Browser browser;
     BrowserContext browserContext;
     Page page;
 
     public Page initBrowser(String browserName) {
+
         System.out.println("The browser name: " + browserName);
 
             playwright = Playwright.create();
