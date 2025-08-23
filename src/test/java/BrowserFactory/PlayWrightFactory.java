@@ -2,11 +2,18 @@ package BrowserFactory;
 
 import com.microsoft.playwright.*;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 public class PlayWrightFactory {
     Playwright playwright;
     Browser browser;
     BrowserContext browserContext;
     Page page;
+    Properties prop;
 
     public Page initBrowser(String browserName) {
 
@@ -37,8 +44,25 @@ public class PlayWrightFactory {
         browserContext = browser.newContext();
         page = browserContext.newPage();
         // Navigate to a default page
-        page.navigate("https://www.example.com");
+        page.navigate("https://www.ndosiautomation.co.za");
         return page;
+
+    }
+    public static Properties initializeProperties() {
+       Properties prop = new Properties();
+        // Code to load properties from a file or set default values
+        FileInputStream  fis = null;
+        try {
+            fis = new FileInputStream("./src/test/java/Config/config.properties");
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            prop.load(fis);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return prop;
 
     }
 
