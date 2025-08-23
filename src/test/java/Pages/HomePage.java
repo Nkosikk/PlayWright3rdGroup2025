@@ -23,7 +23,7 @@ public class HomePage {
 
     // Method to click the "Learn Automation" button
     public void clickLearnAutomationButton() {
-        page.locator(learningMaterialsButtonLocator).click();
+        page.click(learningMaterialsButtonLocator);
     }
 
 

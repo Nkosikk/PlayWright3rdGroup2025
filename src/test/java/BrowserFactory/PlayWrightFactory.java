@@ -15,7 +15,9 @@ public class PlayWrightFactory {
     Page page;
     Properties prop;
 
-    public Page initBrowser(String browserName) {
+    public Page initBrowser(Properties prop) {
+
+       String browserName = prop.getProperty("browser");
 
         System.out.println("The browser name: " + browserName);
 
@@ -44,7 +46,7 @@ public class PlayWrightFactory {
         browserContext = browser.newContext();
         page = browserContext.newPage();
         // Navigate to a default page
-        page.navigate("https://www.ndosiautomation.co.za");
+        page.navigate(prop.getProperty("url"));
         return page;
 
     }
@@ -53,7 +55,7 @@ public class PlayWrightFactory {
         // Code to load properties from a file or set default values
         FileInputStream  fis = null;
         try {
-            fis = new FileInputStream("./src/test/java/Config/config.properties");
+            fis = new FileInputStream(".\\src\\test\\resources\\configs\\config.properties");
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

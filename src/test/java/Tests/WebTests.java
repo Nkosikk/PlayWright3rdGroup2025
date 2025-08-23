@@ -1,12 +1,9 @@
 package Tests;
 
 import Base.BaseTests;
-import BrowserFactory.PlayWrightFactory;
-import Pages.HomePage;
-import com.microsoft.playwright.Page;
 import org.testng.annotations.Test;
 
-public class test extends BaseTests {
+public class WebTests extends BaseTests {
 
     @Test
     public void learnAutomationHeader() {
