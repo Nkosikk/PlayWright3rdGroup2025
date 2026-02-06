@@ -5,23 +5,39 @@ import com.microsoft.playwright.Page;
 public class HomePage {
     Page page;
 
-    private String welcomeText = "h2:has-text('Welcome to Ndosi Online Automation Boot-Camp')";
-    private String learningMaterialsLocator = "button:has-text('Learning Materials')";
+    private String loginButtonLocator = "button.user-pill:has-text('Login')";
+
+    private String welcomeMessageLocator = "p:has-text('overview of your learning journey')";
+
+    private String userMenuButton = "button.user-pill";
+
+    private String logoutButton = "button.nav-dropdown-item:has-text('Logout')";
+
+
+
 
     public HomePage(Page page){
         this.page = page;
     }
 
-    public boolean isLoggedIn() {
-        return page.isVisible("button:has-text('Logout')");
-    }
 
-
-    public HomePage clickLearningMaterials() {
-        page.click(learningMaterialsLocator);
-        return new HomePage(page);
+    public HomePage clickLoginButton() {
+        page.click(loginButtonLocator);
+        return this;
 
     }
 
+    public String getWelcomeMessage() {
+        return page.locator(welcomeMessageLocator).textContent().trim();
+    }
+
+    public HomePage clickUserMenuButton() {
+        page.click(userMenuButton);
+        return this;
+    }
+
+    public void clickLogout() {
+        page.locator(logoutButton).click();
+    }
 
 }
