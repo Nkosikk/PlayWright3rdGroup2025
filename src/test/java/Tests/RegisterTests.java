@@ -31,6 +31,9 @@ public class RegisterTests extends BaseTests {
         SignUpTestData data = TestDataLoader.get("missingEmail");
 
         homePage.clickLoginButton();
+
+        loginPage.clickSignUpLink();
+
         signUpPage.enterFirstName(data.getFirstName())
                 .enterLastName(data.getLastName())
                 .enterEmail(data.getEmail())
@@ -46,6 +49,9 @@ public class RegisterTests extends BaseTests {
         SignUpTestData data = TestDataLoader.get("passwordMismatch");
 
         homePage.clickLoginButton();
+
+        loginPage.clickSignUpLink();
+
         signUpPage.enterFirstName(data.getFirstName())
                 .enterLastName(data.getLastName())
                 .enterEmail(data.getEmail())
