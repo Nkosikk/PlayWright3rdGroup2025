@@ -9,6 +9,8 @@
         <classes>
             <class name="Tests.LoginTests">
             </class>
+            <class name="Tests.RegisterTests">
+            </class>
         </classes>
     </test>
 </suite>

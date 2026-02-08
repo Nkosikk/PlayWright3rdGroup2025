@@ -1,12 +1,13 @@
 package Pages;
 
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.SelectOption;
 
 public class SignUpPage {
     Page page;
 
-    private String firstNameFieldLocator = "#register-firstname";
-    private String lastNameFieldLocator = "#register-lastname";
+    private String firstNameFieldLocator = "#register-firstName";
+    private String lastNameFieldLocator = "#register-lastName";
     private String emailFieldLocator = "#register-email";
     private String passwordFieldLocator = "#register-password";
     private String confirmPasswordFieldLocator = "#register-confirmPassword";
@@ -43,8 +44,12 @@ public class SignUpPage {
         return this;
     }
 
-    public SignUpPage selectGroup(String group) {
-        page.selectOption(groupSelectLocator, group);
+
+    public SignUpPage selectGroup(String groupName) {
+        page.selectOption(
+                groupSelectLocator,
+                new SelectOption().setLabel(groupName)
+        );
         return this;
     }
 

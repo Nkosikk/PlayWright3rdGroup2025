@@ -7,4 +7,31 @@ public class SignUpTestData {
     private String password;
     private String confirmPassword;
     private String group;
+
+    public SignUpTestData() {
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public String getGroup() {
+        return group;
+    }
 }

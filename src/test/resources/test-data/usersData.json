@@ -1,14 +1,14 @@
 {
   "studentUser": {
-    "email": "student@test.com",
-    "password": "Password@123"
+    "email": "EnglandStudent@test.com",
+    "password": "England@123"
   },
   "adminUser": {
     "email": "Elizabeth@England.com",
     "password": "England@123"
   },
   "instructorUser": {
-    "email": "Elizabeth@England.com",
+    "email": "elizabeth.england@test.com",
     "password": "England@123"
   }
 }
