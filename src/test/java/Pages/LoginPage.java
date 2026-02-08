@@ -8,21 +8,22 @@ import static org.testng.AssertJUnit.assertNull;
 public class LoginPage {
     Page page;
 
-    private String emailInputLocator = "#login-email";
-    private String passwordInputLocator = "#login-password";
+    private String emailFieldLocator = "#login-email";
+    private String passwordFieldLocator = "#login-password";
     private String submitButtonLocator = "#login-submit";
+    private String signUpLinkLocator = "#signup-toggle";
 
     public LoginPage(Page page){
         this.page = page;
     }
 
     public LoginPage enterEmail(String email) {
-        page.fill(emailInputLocator, email);
+        page.fill(emailFieldLocator, email);
         return this;
     }
 
     public LoginPage enterPassword(String password) {
-        page.fill(passwordInputLocator, password);
+        page.fill(passwordFieldLocator, password);
         return this;
     }
 
@@ -60,6 +61,11 @@ public class LoginPage {
         System.out.println("Token is null as expected after failed login");
     }
 
+    public LoginPage clickSignUpLink() {
+        page.click(signUpLinkLocator);
+
+        return this;
+    }
 
 
 }
