@@ -13,26 +13,21 @@ import java.nio.file.Paths;
 
 public class ExtentReportListener implements ITestListener {
     private static ExtentReports extent;
-    private static ExtentTest extentTest;
+    private static ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
 
     @Override
-    public void onTestStart(ITestResult result){
-        extentTest = extent.createTest(result.getMethod().getMethodName());
+    public void onTestStart(ITestResult result) {
+        extentTest.set(extent.createTest(result.getMethod().getMethodName()));
     }
 
-    //@Override
-    //public void onTestFailure(ITestResult result){
-    //    extentTest.log(Status.FAIL,"Test Case "+ result.getMethod().getMethodName()+ " has failed");
-    //}
 
     @Override
     public void onTestFailure(ITestResult result) {
-        Object testClass = result.getInstance();
-        Page page = ((BaseTests) testClass).page;
+        Page page = ((BaseTests) result.getInstance()).getPage();
 
         String screenshotPath = captureScreenshot(page, result.getMethod().getMethodName());
-        extentTest.log(Status.FAIL, "Test Case " + result.getMethod().getMethodName() + " has failed");
-        extentTest.addScreenCaptureFromPath(screenshotPath);
+        extentTest.get().log(Status.FAIL, "Test failed");
+        extentTest.get().addScreenCaptureFromPath(screenshotPath);
     }
 
     private String captureScreenshot(Page page, String methodName) {
@@ -43,13 +38,19 @@ public class ExtentReportListener implements ITestListener {
 
 
     @Override
-    public void onTestSuccess(ITestResult result){
-        extentTest.log(Status.PASS,"Test Case " + result.getMethod().getMethodName()+ " has passed");
+    public void onTestSuccess(ITestResult result) {
+        extentTest.get().log(
+                Status.PASS,
+                "Test Case " + result.getMethod().getMethodName() + " has passed"
+        );
     }
 
     @Override
-    public void onTestSkipped(ITestResult result){
-        extentTest.log(Status.SKIP,"Test Case " + result.getMethod().getMethodName()+ " has been skipped");
+    public void onTestSkipped(ITestResult result) {
+        extentTest.get().log(
+                Status.SKIP,
+                "Test Case " + result.getMethod().getMethodName() + " has been skipped"
+        );
     }
 
     @Override

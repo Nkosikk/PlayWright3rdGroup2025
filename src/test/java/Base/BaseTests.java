@@ -17,7 +17,7 @@ import java.util.Properties;
 
 public class BaseTests {
 
-    public Page page;
+    protected Page page;
     protected HomePage homePage;
     protected LoginPage loginPage;
     protected SignUpPage signUpPage;
@@ -29,41 +29,33 @@ public class BaseTests {
     @BeforeMethod
     public void setup() {
         pf = new PlayWrightBrowserFactory();
-        prop = pf.init_prop();
+        prop = pf.init_prop(); // Initialize properties if needed
         pf.initBrowser(prop);
-
         page = pf.getPage();
-        context = page.context();
-
-        context.tracing().start(
-                new Tracing.StartOptions()
-                        .setScreenshots(true)
-                        .setSnapshots(true)
-                        .setSources(true)
-        );
-
         homePage = new HomePage(page);
         loginPage = new LoginPage(page);
         signUpPage = new SignUpPage(page);
+
+        page.context().tracing().start(new Tracing.StartOptions()
+                .setScreenshots(true)
+                .setSnapshots(true)
+                .setSources(true));
+    }
+
+    public Page getPage() {
+        return page;
     }
 
 
-
-
-    @AfterMethod
-    public void tearDown(ITestResult result) {
-        if (result.getStatus() == ITestResult.FAILURE) {
-            context.tracing().stop(
-                    new Tracing.StopOptions()
-                            .setPath(Paths.get("traces/" + result.getName() + ".zip"))
-            );
-        } else {
-            context.tracing().stop();
-        }
-
-        if (context != null) {
-            context.close();
+    @AfterTest
+    public void tearDown() {
+        // Stop tracing and export trace
+        page.context().tracing().stop(new Tracing.StopOptions()
+                .setPath(java.nio.file.Paths.get("trace.zip")));
+        if (page != null) {
+            page.close();
         }
     }
+
 
 }
