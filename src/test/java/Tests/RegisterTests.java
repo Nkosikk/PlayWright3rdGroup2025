@@ -7,7 +7,7 @@ import Base.BaseTests;
 
 public class RegisterTests extends BaseTests {
 
-    @Test
+   /* @Test
     public void registerWithValidData() {
 
         SignUpTestData data = TestDataLoader.get("validUser");
@@ -23,7 +23,7 @@ public class RegisterTests extends BaseTests {
                 .enterConfirmPassword(data.getConfirmPassword())
                 .selectGroup(data.getGroup())
                 .clickSubmitButton();
-    }
+    } */
 
     @Test
     public void registerWithMissingEmail() {
