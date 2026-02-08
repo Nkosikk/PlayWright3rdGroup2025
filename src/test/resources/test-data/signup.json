@@ -1,0 +1,28 @@
+{
+  "validUser": {
+    "firstName": "Elizabeth",
+    "lastName": "England",
+    "email": "elizabeth.england@test.com",
+    "password": "England@123",
+    "confirmPassword": "England@123",
+    "group": "student"
+  },
+
+  "missingEmail": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "",
+    "password": "Password@123",
+    "confirmPassword": "Password@123",
+    "group": "student"
+  },
+
+  "passwordMismatch": {
+    "firstName": "Anna",
+    "lastName": "Smith",
+    "email": "anna.smith@test.com",
+    "password": "Password@123",
+    "confirmPassword": "Password@456",
+    "group": "teacher"
+  }
+}
