@@ -7,5 +7,17 @@
   "invalidPassword": {
     "email": "Elizabeth@england.com",
     "password": "wrongpassword"
+  },
+  "invalidEmail": {
+    "email": "Uknown@england.com",
+    "password": "England@123"
+  },
+  "invalidEmailAndPassword": {
+    "email": "Uknown@england.com",
+    "password": "UknownPass@123"
+  },
+  "invalidLoginEmptyFields": {
+    "email": "",
+    "password": ""
   }
 }

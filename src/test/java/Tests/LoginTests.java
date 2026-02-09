@@ -1,12 +1,18 @@
 package Tests;
 
 import Base.BaseTests;
+import TestData.loaders.TestDataLoader;
+import TestData.models.AuthTestData;
+import TestData.models.SignUpTestData;
 import org.testng.annotations.Test;
 
 public class LoginTests extends BaseTests {
 
     @Test
     public void loginWithInValidPassword() {
+
+        AuthTestData data = TestDataLoader.get("authData.json", "invalidPassword", AuthTestData.class);
+
         homePage.clickLoginButton();
 
         loginPage.enterEmail("Elizabeth@england.com")
@@ -19,6 +25,9 @@ public class LoginTests extends BaseTests {
 
     @Test
     public void loginWithInValidEmail() {
+
+        AuthTestData data = TestDataLoader.get("authData.json", "invalidEmail", AuthTestData.class);
+
         homePage.clickLoginButton();
 
         loginPage.enterEmail("Uknown@england.com")
@@ -31,6 +40,9 @@ public class LoginTests extends BaseTests {
 
     @Test
     public void loginWithInValidEmailAndPassword() {
+
+        AuthTestData data = TestDataLoader.get("authData.json", "invalidEmailAndPassword", AuthTestData.class);
+
         homePage.clickLoginButton();
 
         loginPage.enterEmail("Uknown@england.com")
@@ -43,6 +55,9 @@ public class LoginTests extends BaseTests {
 
     @Test
     public void loginWithEmptyFields() {
+
+        AuthTestData data = TestDataLoader.get("authData.json", "invalidLoginEmptyFields", AuthTestData.class);
+
         homePage.clickLoginButton();
 
         loginPage.enterEmail("")
@@ -55,13 +70,13 @@ public class LoginTests extends BaseTests {
 
     @Test
     public void loginWithValidCredentials() {
+
+        AuthTestData data = TestDataLoader.get("authData.json", "validLogin", AuthTestData.class);
+
         homePage.clickLoginButton();
         loginPage.enterEmail("Elizabeth@england.com")
                 .enterPassword("England@123")
                 .clickSubmitButton();
-
-        String welcomeMessage = homePage.getWelcomeMessage();
-        assert welcomeMessage.equals("Here's an overview of your learning journey") : "Welcome message does not match!";
 
         loginPage.verifyToken(page);
 

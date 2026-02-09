@@ -7,15 +7,21 @@ import io.qameta.allure.internal.shadowed.jackson.databind.ObjectMapper;
 import java.nio.file.Paths;
 
 public class TestDataLoader {
-    public static SignUpTestData get(String key) {
-        ObjectMapper mapper = new ObjectMapper();
+
+    private static final ObjectMapper mapper = new ObjectMapper();
+    private static final String BASE_PATH = "src/test/resources/test-data/";
+
+    public static <T> T get(String fileName, String key, Class<T> clazz) {
         try {
             JsonNode root = mapper.readTree(
-                    Paths.get("src/test/resources/test-data/signupData.json").toFile()
+                    Paths.get(BASE_PATH + fileName).toFile()
             );
-            return mapper.treeToValue(root.get(key), SignUpTestData.class);
+            return mapper.treeToValue(root.get(key), clazz);
         } catch (Exception e) {
-            throw new RuntimeException("Failed to load test data", e);
+            throw new RuntimeException(
+                    "Failed to load test data from " + fileName, e
+            );
         }
     }
 }
+

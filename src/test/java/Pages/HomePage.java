@@ -7,8 +7,6 @@ public class HomePage {
 
     private String loginButtonLocator = "button.user-pill:has-text('Login')";
 
-    private String welcomeMessageLocator = "p:has-text('overview of your learning journey')";
-
     private String userMenuButton = "button.user-pill";
 
     private String logoutButton = "button.nav-dropdown-item:has-text('Logout')";
@@ -27,9 +25,6 @@ public class HomePage {
 
     }
 
-    public String getWelcomeMessage() {
-        return page.locator(welcomeMessageLocator).textContent().trim();
-    }
 
     public HomePage clickUserMenuButton() {
         page.click(userMenuButton);

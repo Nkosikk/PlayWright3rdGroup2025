@@ -10,7 +10,7 @@ public class RegisterTests extends BaseTests {
     @Test
     public void registerWithValidData() {
 
-        SignUpTestData data = TestDataLoader.get("validUser");
+        SignUpTestData data = TestDataLoader.get("signupData.json", "validUser", SignUpTestData.class);
 
         homePage.clickLoginButton();
 
@@ -28,7 +28,7 @@ public class RegisterTests extends BaseTests {
     @Test
     public void registerWithMissingEmail() {
 
-        SignUpTestData data = TestDataLoader.get("missingEmail");
+        SignUpTestData data = TestDataLoader.get("signupData.json", "missingEmail", SignUpTestData.class);
 
         homePage.clickLoginButton();
 
@@ -46,7 +46,8 @@ public class RegisterTests extends BaseTests {
     @Test
     public void registerWithPasswordMismatch() {
 
-        SignUpTestData data = TestDataLoader.get("passwordMismatch");
+        SignUpTestData data = TestDataLoader.get("signupData.json", "passwordMismatch", SignUpTestData.class);
+
 
         homePage.clickLoginButton();
 
