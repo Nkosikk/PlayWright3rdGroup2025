@@ -1,5 +1,6 @@
 package Pages;
 
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
 public class HomePage {
@@ -27,12 +28,18 @@ public class HomePage {
 
 
     public HomePage clickUserMenuButton() {
-        page.click(userMenuButton);
+        Locator userMenu = page.locator(userMenuButton)
+                .filter(new Locator.FilterOptions().setHasText("Tatalo"));
+        userMenu.waitFor();
+        userMenu.click();
         return this;
     }
 
+
     public void clickLogout() {
-        page.locator(logoutButton).click();
+        Locator logout = page.locator(logoutButton);
+        logout.waitFor();
+        logout.click();
     }
 
 }

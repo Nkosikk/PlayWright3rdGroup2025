@@ -75,10 +75,12 @@ public class LoginTests extends BaseTests {
 
         homePage.clickLoginButton();
         loginPage.enterEmail("Elizabeth@england.com")
-                .enterPassword("England@123")
+                .enterPassword("England@123456")
                 .clickSubmitButton();
 
         loginPage.verifyToken(page);
+
+        page.locator("button.user-pill").waitFor();
 
         homePage.clickUserMenuButton()
                 .clickLogout();
