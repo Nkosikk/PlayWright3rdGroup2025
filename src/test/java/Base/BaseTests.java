@@ -47,15 +47,18 @@ public class BaseTests {
     }
 
 
-    @AfterTest
-    public void tearDown() {
-        // Stop tracing and export trace
+    @AfterMethod
+    public void tearDown(ITestResult result) {
+        String testName = result.getMethod().getMethodName();
+
         page.context().tracing().stop(new Tracing.StopOptions()
-                .setPath(java.nio.file.Paths.get("trace.zip")));
+                .setPath(Paths.get("traces/" + testName + ".zip")));
+
         if (page != null) {
             page.close();
         }
     }
+
 
 
 }
