@@ -1,10 +1,10 @@
 {
   "validUser": {
-    "firstName": "Marty",
-    "lastName": "B",
-    "email": "MartyB@Army.com",
-    "password": "Marty@123",
-    "confirmPassword": "Marty@123",
+    "firstName": "Lucy",
+    "lastName": "Carrots",
+    "email": "Zoolander@Army.com",
+    "password": "LawAbiding@123",
+    "confirmPassword": "LawAbiding@123",
     "group": "1st Group 2026 (2026)"
   },
 
